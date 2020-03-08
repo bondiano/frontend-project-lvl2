@@ -1,0 +1,40 @@
+{
+  "name": "frontend-project-lvl2",
+  "version": "1.0.0",
+  "description": "Compares two configuration files and shows a difference.",
+  "main": "src/index.js",
+  "type": "module",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
+  "engines": {
+    "node": ">=13"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bondiano/frontend-project-lvl2.git"
+  },
+  "author": "bondiano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bondiano/frontend-project-lvl2/issues"
+  },
+  "homepage": "https://github.com/bondiano/frontend-project-lvl2#readme",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "dependencies": {
+    "commander": "^4.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.8.2",
+    "jest": "^25.1.0",
+    "jest-cli": "^25.1.0"
+  }
+}
