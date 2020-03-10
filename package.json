@@ -8,7 +8,7 @@
     "gendiff": "bin/gendiff.js"
   },
   "engines": {
-    "node": ">=13"
+    "node": "13"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

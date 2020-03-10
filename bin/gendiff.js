@@ -1,9 +1,14 @@
-#!/usr/bin/env node
-const program = require('commander');
+#!/usr/bin/env node --experimental-json-modules --no-warnings
+import program from 'commander';
 
-const packageData = require('../package.json');
+import config from '../package.json';
 
 program
-  .version(packageData.version)
-  .description(packageData.description)
+  .version(config.version)
+  .description(config.description)
+  .option('-f, --format [type]', 'output format')
+  .arguments('<firstConfig> <secondConfig>')
+  .action((firstConfig, secondConfig) => {
+    console.log(firstConfig, secondConfig, program.format);
+  })
   .parse(process.argv);
