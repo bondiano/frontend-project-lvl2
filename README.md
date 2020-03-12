@@ -16,3 +16,7 @@ Install packages:
 ```
 npm link
 ```
+
+## Usage example
+
+[![asciicast](https://asciinema.org/a/2HjTSxtdgrBhWD2xKNoearBv5.svg)](https://asciinema.org/a/2HjTSxtdgrBhWD2xKNoearBv5)
