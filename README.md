@@ -31,12 +31,51 @@ npm link
 $ make test
 ```
 
-## Usage example
+## Usage
 
-With JSON
+### Help
 
-[![asciicast](https://asciinema.org/a/2HjTSxtdgrBhWD2xKNoearBv5.svg)](https://asciinema.org/a/2HjTSxtdgrBhWD2xKNoearBv5)
+For get help run:
+```sh
+gendiff --help
+```
 
-With Yaml
+### Simple run
 
-[![asciicast](https://asciinema.org/a/SFqUlbyGz1mB5PC7GOkMkMD2I.svg)](https://asciinema.org/a/SFqUlbyGz1mB5PC7GOkMkMD2I)
+To compare two files run:
+```sh
+gendiff [options] <pathToFirstFile> <pathToSecondFile>
+```
+
+### Supported output formats
+
+To specify output format add `--format` flag and type of the output:
+```sh
+gendiff --format [type] <pathToFirstFile> <pathToSecondFile>
+```
+
+Supported `[type]`: __diff__(*default*), __plain__, __json__
+
+### Examples
+
+#### Diff format
+
+With JSON input
+
+[![asciicast](https://asciinema.org/a/JJHxbXDbZifHmNFG1gQbGlyuk.svg)](https://asciinema.org/a/JJHxbXDbZifHmNFG1gQbGlyuk)
+
+With Yaml input
+
+[![asciicast](https://asciinema.org/a/0z66pSXFIrRxA1C50JDcwZVFH.svg)](https://asciinema.org/a/0z66pSXFIrRxA1C50JDcwZVFH)
+
+With Ini input
+
+[![asciicast](https://asciinema.org/a/c4MFiA0EvqWH2ECYkfSGCejsN.svg)](https://asciinema.org/a/c4MFiA0EvqWH2ECYkfSGCejsN)
+
+#### Plain format
+
+[![asciicast](https://asciinema.org/a/ola7gYqPGUDCSVt8LWtumL01K.svg)](https://asciinema.org/a/ola7gYqPGUDCSVt8LWtumL01K)
+
+#### Json format
+
+[![asciicast](https://asciinema.org/a/FxBvurWsRwCTxARhIRSwdPzYj.svg)](https://asciinema.org/a/FxBvurWsRwCTxARhIRSwdPzYj)

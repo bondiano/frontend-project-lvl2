@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import getParser from './get-parser';
-import getRenderer from './renderers';
+import getFormatter from './formatters';
 import buildAst from './ast/build-ast';
 
 const getData = (filePath) => {
@@ -17,7 +17,7 @@ const genDiff = (pathToBefore, pathToAfter, format = 'diff') => {
   const before = getData(pathToBefore);
   const after = getData(pathToAfter);
 
-  const render = getRenderer(format);
+  const render = getFormatter(format);
   const diffAst = buildAst(before, after);
 
   return render(diffAst);

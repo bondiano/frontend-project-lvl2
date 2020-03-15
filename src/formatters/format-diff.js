@@ -1,22 +1,12 @@
 import { isObject, flatten } from 'lodash';
 
+import { sortByKeys } from './utils';
 import nodeTypes from '../ast/node-types';
 
 const DEFAULT_INDENT_LEVEL = 1;
 const TAB = '  ';
 const TAB_STEP = 2;
 
-const sortByKeys = (ast) => [...ast].sort(({ key: keyA }, { key: keyB }) => {
-  if (keyA === keyB) {
-    return 0;
-  }
-
-  if (keyA < keyB) {
-    return -1;
-  }
-
-  return 1;
-});
 
 const getIndent = (level) => TAB.repeat(level);
 
@@ -30,12 +20,12 @@ const stringify = (value, indentLevel) => {
   return value;
 };
 
-const render = (ast, indentLevel) => {
+const render = (node, indentLevel) => {
   const indent = getIndent(indentLevel);
 
   /* eslint-disable max-len */
-  const diffFormetterByType = {
-    [nodeTypes.CHANGED]: (data) => [diffFormetterByType[nodeTypes.ADDED](data), diffFormetterByType[nodeTypes.REMOVED](data)],
+  const diffFormatterByType = {
+    [nodeTypes.CHANGED]: (data) => [diffFormatterByType[nodeTypes.ADDED](data), diffFormatterByType[nodeTypes.REMOVED](data)],
     [nodeTypes.UNCHANGED]: ({ key, oldValue }) => `${indent}  ${key}: ${oldValue}`,
     [nodeTypes.REMOVED]: ({ key, oldValue }) => `${indent}- ${key}: ${stringify(oldValue, indentLevel)}`,
     [nodeTypes.ADDED]: ({ key, newValue }) => `${indent}+ ${key}: ${stringify(newValue, indentLevel)}`,
@@ -44,9 +34,9 @@ const render = (ast, indentLevel) => {
   /* eslint-enable max-len */
 
   return flatten(
-    sortByKeys(ast)
+    sortByKeys(node)
       .map(({ type, ...data }) => {
-        const format = diffFormetterByType[type];
+        const format = diffFormatterByType[type];
 
         return format(data);
       }),
