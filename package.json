@@ -2,16 +2,17 @@
   "name": "frontend-project-lvl2",
   "version": "1.0.0",
   "description": "Compares two configuration files and shows a difference.",
-  "main": "src/index.js",
-  "type": "module",
+  "main": "dist/index.js",
   "bin": {
-    "gendiff": "bin/gendiff.js"
+    "gendiff": "dist/bin/index.js"
   },
   "engines": {
     "node": "13"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -31,8 +32,15 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.8.2",
     "jest": "^25.1.0",
