@@ -1,12 +1,19 @@
 import fs from 'fs';
+import path from 'path';
 import _ from 'lodash';
+
+import getParser from './getParser';
 
 const genDiff = (pathToFirst, pathToSecond) => {
   const firstFileData = fs.readFileSync(pathToFirst, 'utf-8');
   const secondFileData = fs.readFileSync(pathToSecond, 'utf-8');
 
-  const first = JSON.parse(firstFileData);
-  const second = JSON.parse(secondFileData);
+  const firstFileExt = path.extname(pathToFirst);
+  const secondFileExt = path.extname(pathToSecond);
+
+
+  const first = getParser(firstFileExt)(firstFileData);
+  const second = getParser(secondFileExt)(secondFileData);
   const full = { ...first, ...second };
 
   const diffStr = Object.entries(full).reduce((acc, [key, value]) => {

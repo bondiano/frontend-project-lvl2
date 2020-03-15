@@ -11,4 +11,9 @@ describe('Gendiff', () => {
     const after = `${path}after.json`;
     expect(getDiff(before, after)).toEqual(expected);
   });
+  it('should work with yaml', () => {
+    const before = `${path}before.yaml`;
+    const after = `${path}after.yaml`;
+    expect(getDiff(before, after)).toEqual(expected);
+  });
 });

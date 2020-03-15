@@ -5,7 +5,8 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c231f8a3989bcd465d2a/test_coverage)](https://codeclimate.com/github/bondiano/frontend-project-lvl2/test_coverage)
 
 Simple CLI-tool for take difference between configuration files. Support formats: `*.json`, `*.yaml`, `*.ini`.
-[Read more about this education project.](https://ru.hexlet.io/professions/frontend/projects/46).
+
+[Read more about this education project](https://ru.hexlet.io/professions/frontend/projects/46).
 
 ## Installation
 
@@ -32,4 +33,10 @@ $ make test
 
 ## Usage example
 
+With JSON
+
 [![asciicast](https://asciinema.org/a/2HjTSxtdgrBhWD2xKNoearBv5.svg)](https://asciinema.org/a/2HjTSxtdgrBhWD2xKNoearBv5)
+
+With Yaml
+
+[![asciicast](https://asciinema.org/a/SFqUlbyGz1mB5PC7GOkMkMD2I.svg)](https://asciinema.org/a/SFqUlbyGz1mB5PC7GOkMkMD2I)
