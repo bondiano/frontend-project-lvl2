@@ -5,15 +5,13 @@ import getDiff from '../src';
 const path = `${__dirname}/__fixtures__/`;
 const expected = fs.readFileSync(`${path}expected.txt`, 'utf-8');
 
+const formats = ['.json', '.yaml', '.ini'];
+
+const filesByFormat = formats
+  .reduce((acc, format) => [...acc, [format, `${path}before${format}`, `${path}after${format}`]], []);
+
 describe('Gendiff', () => {
-  it('should work with json', () => {
-    const before = `${path}before.json`;
-    const after = `${path}after.json`;
-    expect(getDiff(before, after)).toEqual(expected);
-  });
-  it('should work with yaml', () => {
-    const before = `${path}before.yaml`;
-    const after = `${path}after.yaml`;
+  it.each(filesByFormat)('should work with %s', (_, before, after) => {
     expect(getDiff(before, after)).toEqual(expected);
   });
 });
