@@ -4,7 +4,7 @@
   "description": "Compares two configuration files and shows a difference.",
   "main": "dist/index.js",
   "bin": {
-    "gendiff": "dist/bin/index.js"
+    "gendiff": "dist/bin/gendiff.js"
   },
   "engines": {
     "node": "13"
