@@ -1,23 +1,21 @@
-import { isObject, flatten } from 'lodash';
+import { isObject } from 'lodash';
 
-import { sortByKeys } from './utils';
-import nodeTypes from '../ast/node-types';
+import nodeTypes from '../ast/nodeTypes';
 
 const DEFAULT_INDENT_LEVEL = 1;
 const TAB = '  ';
 const TAB_STEP = 2;
 
-
 const getIndent = (level) => TAB.repeat(level);
 
 const stringify = (value, indentLevel) => {
-  if (isObject(value)) {
-    const string = Object.entries(value).map(([key, _value]) => `${getIndent(indentLevel + 3)}${key}: ${_value}`).join('\n');
-
-    return `{\n${string}\n${getIndent(indentLevel + 1)}}`;
+  if (!isObject(value)) {
+    return value;
   }
 
-  return value;
+  const string = Object.entries(value).map(([key, _value]) => `${getIndent(indentLevel + 3)}${key}: ${_value}`).join('\n');
+
+  return `{\n${string}\n${getIndent(indentLevel + 1)}}`;
 };
 
 const render = (node, indentLevel) => {
@@ -33,14 +31,11 @@ const render = (node, indentLevel) => {
   };
   /* eslint-enable max-len */
 
-  return flatten(
-    sortByKeys(node)
-      .map(({ type, ...data }) => {
-        const format = diffFormatterByType[type];
+  return node.map(({ type, ...data }) => {
+    const format = diffFormatterByType[type];
 
-        return format(data);
-      }),
-  ).join('\n');
+    return format(data);
+  }).flat().join('\n');
 };
 
 export default (ast) => `{\n${render(ast, DEFAULT_INDENT_LEVEL)}\n}`;

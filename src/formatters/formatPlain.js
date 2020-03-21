@@ -1,7 +1,6 @@
 import { isObject, flatten, isString } from 'lodash';
 
-import { sortByKeys } from './utils';
-import nodeTypes from '../ast/node-types';
+import nodeTypes from '../ast/nodeTypes';
 
 
 const normalizeValue = (value) => {
@@ -25,7 +24,7 @@ const buildStrByType = {
 };
 
 const render = (ast, path) => {
-  const list = sortByKeys(ast).map(({ type, ...data }) => buildStrByType[type](data, path, render));
+  const list = ast.map(({ type, ...data }) => buildStrByType[type](data, path, render));
 
   const result = flatten(list)
     .filter((element) => element !== null)

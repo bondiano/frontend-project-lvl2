@@ -21,10 +21,10 @@ const formatIni = (content) => Object.entries(content).reduce((acc, [key, value]
 }, {});
 
 const parserByExt = {
-  '.json': JSON.parse,
-  '.yml': jsYaml.safeLoad,
-  '.yaml': jsYaml.safeLoad,
-  '.ini': flowRight(formatIni, ini.parse),
+  json: JSON.parse,
+  yml: jsYaml.safeLoad,
+  yaml: jsYaml.safeLoad,
+  ini: flowRight(formatIni, ini.parse),
 };
 
 export default (ext) => parserByExt[ext];

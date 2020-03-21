@@ -1,13 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 
-import getParser from './get-parser';
+import buildAst from './ast/buildAst';
+
+import getParser from './getParser';
 import getFormatter from './formatters';
-import buildAst from './ast/build-ast';
 
 const getData = (filePath) => {
   const fileData = fs.readFileSync(filePath, 'utf-8');
-  const fileExt = path.extname(filePath);
+  const fileExt = path.extname(filePath).slice(1);
   const data = getParser(fileExt)(fileData);
 
   return data;
@@ -18,9 +19,9 @@ const genDiff = (pathToBefore, pathToAfter, format = 'diff') => {
   const after = getData(pathToAfter);
 
   const render = getFormatter(format);
-  const diffAst = buildAst(before, after);
+  const diff = buildAst(before, after);
 
-  return render(diffAst);
+  return render(diff);
 };
 
 export default genDiff;

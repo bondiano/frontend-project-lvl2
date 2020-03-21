@@ -1,6 +1,6 @@
-import formatDiff from './format-diff';
-import formatPlain from './format-plain';
-import formatJson from './format-json';
+import formatDiff from './formatDiff';
+import formatPlain from './formatPlain';
+import formatJson from './formatJson';
 
 const getFormatter = (format) => ({
   diff: formatDiff,
